@@ -35,6 +35,7 @@ export default function ContactDetail() {
   }
 
   function handleDeleteConfirmed() {
+    if (!contact) return;
     removeMessages();
     removeMemos();
     removeContact(contact.id);
