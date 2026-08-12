@@ -8,6 +8,7 @@ const DEFAULT_SETTINGS: AppSettings = {
   claudeModel: 'claude-opus-5',
   geminiApiKey: '',
   geminiModel: 'gemini-2.5-flash',
+  sharedPasscode: '',
 };
 
 function normalizeSettings(raw: AppSettings & { apiKey?: string; model?: string }): AppSettings {

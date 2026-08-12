@@ -29,7 +29,7 @@ export interface Memo {
   updatedAt: number;
 }
 
-export type AiProvider = 'claude' | 'gemini';
+export type AiProvider = 'claude' | 'gemini' | 'shared';
 
 export interface AppSettings {
   provider: AiProvider;
@@ -37,5 +37,6 @@ export interface AppSettings {
   claudeModel: string;
   geminiApiKey: string;
   geminiModel: string;
+  sharedPasscode: string;
 }
 

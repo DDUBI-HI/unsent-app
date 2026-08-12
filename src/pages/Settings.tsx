@@ -15,8 +15,9 @@ const GEMINI_MODELS = [
 ];
 
 const PROVIDERS: { value: AiProvider; label: string }[] = [
-  { value: 'claude', label: 'Claude (Anthropic)' },
-  { value: 'gemini', label: 'Gemini (Google)' },
+  { value: 'claude', label: 'Claude (내 키)' },
+  { value: 'gemini', label: 'Gemini (내 키)' },
+  { value: 'shared', label: '함께 쓰기 (비밀번호)' },
 ];
 
 export default function Settings() {
@@ -27,6 +28,7 @@ export default function Settings() {
   const [claudeModel, setClaudeModel] = useState(settings.claudeModel);
   const [geminiApiKey, setGeminiApiKey] = useState(settings.geminiApiKey);
   const [geminiModel, setGeminiModel] = useState(settings.geminiModel);
+  const [sharedPasscode, setSharedPasscode] = useState(settings.sharedPasscode);
   const [saved, setSaved] = useState(false);
 
   function handleSave() {
@@ -36,6 +38,7 @@ export default function Settings() {
       claudeModel,
       geminiApiKey: geminiApiKey.trim(),
       geminiModel,
+      sharedPasscode: sharedPasscode.trim(),
     });
     setSaved(true);
     setTimeout(() => setSaved(false), 1500);
@@ -60,13 +63,13 @@ export default function Settings() {
           <label className="mb-2 block text-sm font-medium text-neutral-700 dark:text-neutral-300">
             AI 답장에 쓸 모델
           </label>
-          <div className="flex gap-2">
+          <div className="flex flex-col gap-2">
             {PROVIDERS.map((p) => (
               <button
                 key={p.value}
                 type="button"
                 onClick={() => setProvider(p.value)}
-                className={`flex-1 rounded-xl border px-3 py-3 text-sm ${
+                className={`rounded-xl border px-3 py-3 text-left text-sm ${
                   provider === p.value
                     ? 'border-neutral-900 bg-neutral-900 text-white dark:border-neutral-100 dark:bg-neutral-100 dark:text-neutral-900'
                     : 'border-neutral-300 text-neutral-600 dark:border-neutral-700 dark:text-neutral-400'
@@ -78,7 +81,23 @@ export default function Settings() {
           </div>
         </div>
 
-        {provider === 'claude' ? (
+        {provider === 'shared' ? (
+          <div>
+            <label className="mb-2 block text-sm font-medium text-neutral-700 dark:text-neutral-300">
+              공유 비밀번호
+            </label>
+            <input
+              type="password"
+              value={sharedPasscode}
+              onChange={(e) => setSharedPasscode(e.target.value)}
+              placeholder="비밀번호 입력"
+              className="w-full rounded-xl border border-neutral-300 px-4 py-3 text-base outline-none focus:border-neutral-500 dark:border-neutral-700 dark:bg-neutral-800"
+            />
+            <p className="mt-2 text-xs text-neutral-400">
+              앱 관리자가 알려준 비밀번호를 입력하면, 본인 API 키 없이 AI 답장을 쓸 수 있어요.
+            </p>
+          </div>
+        ) : provider === 'claude' ? (
           <>
             <div>
               <label className="mb-2 block text-sm font-medium text-neutral-700 dark:text-neutral-300">
