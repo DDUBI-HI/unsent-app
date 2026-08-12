@@ -50,13 +50,22 @@ export default function ContactList() {
     <div className="flex min-h-svh flex-col">
       <header className="flex items-center justify-between border-b border-neutral-200 px-4 py-4 dark:border-neutral-800">
         <h1 className="text-lg font-semibold text-neutral-900 dark:text-neutral-100">보내지 못한 말</h1>
-        <Link
-          to="/new"
-          className="flex h-9 w-9 items-center justify-center rounded-full bg-neutral-900 text-lg text-white dark:bg-neutral-100 dark:text-neutral-900"
-          aria-label="새 대화상대 추가"
-        >
-          +
-        </Link>
+        <div className="flex items-center gap-2">
+          <Link
+            to="/settings"
+            className="flex h-9 w-9 items-center justify-center rounded-full text-lg text-neutral-500 dark:text-neutral-400"
+            aria-label="설정"
+          >
+            ⚙️
+          </Link>
+          <Link
+            to="/new"
+            className="flex h-9 w-9 items-center justify-center rounded-full bg-neutral-900 text-lg text-white dark:bg-neutral-100 dark:text-neutral-900"
+            aria-label="새 대화상대 추가"
+          >
+            +
+          </Link>
+        </div>
       </header>
 
       {sorted.length === 0 ? (

@@ -117,6 +117,18 @@ export default function ContactDetail() {
           >
             메모
           </NavLink>
+          <NavLink
+            to={`/c/${id}/ai`}
+            className={({ isActive }) =>
+              `flex-1 border-b-2 py-2 text-center text-sm font-medium ${
+                isActive
+                  ? 'border-neutral-900 text-neutral-900 dark:border-neutral-100 dark:text-neutral-100'
+                  : 'border-transparent text-neutral-400'
+              }`
+            }
+          >
+            AI
+          </NavLink>
         </nav>
       </header>
 

@@ -26,6 +26,8 @@ export default function NewContact() {
       emoji: RELATIONSHIP_META[relationship].emoji,
       color: randomColor(),
       createdAt: Date.now(),
+      personaMode: 'loving',
+      styleNotes: '',
     });
 
     const trimmedBio = bio.trim();

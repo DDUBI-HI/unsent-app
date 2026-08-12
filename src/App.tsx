@@ -4,6 +4,8 @@ import NewContact from './pages/NewContact';
 import ContactDetail from './pages/ContactDetail';
 import ChatView from './pages/ChatView';
 import MemoView from './pages/MemoView';
+import PersonaView from './pages/PersonaView';
+import Settings from './pages/Settings';
 
 function App() {
   return (
@@ -12,9 +14,11 @@ function App() {
         <Routes>
           <Route path="/" element={<ContactList />} />
           <Route path="/new" element={<NewContact />} />
+          <Route path="/settings" element={<Settings />} />
           <Route path="/c/:id" element={<ContactDetail />}>
             <Route index element={<ChatView />} />
             <Route path="memo" element={<MemoView />} />
+            <Route path="ai" element={<PersonaView />} />
           </Route>
         </Routes>
       </div>

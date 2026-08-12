@@ -1,5 +1,7 @@
 export type RelationshipType = 'breakup' | 'crush' | 'other';
 
+export type PersonaMode = 'loving' | 'cold' | 'learned';
+
 export interface Contact {
   id: string;
   name: string;
@@ -7,13 +9,15 @@ export interface Contact {
   emoji: string;
   color: string;
   createdAt: number;
+  personaMode: PersonaMode;
+  styleNotes: string;
 }
 
 export interface Message {
   id: string;
   contactId: string;
   text: string;
-  sender: 'me';
+  sender: 'me' | 'them';
   createdAt: number;
 }
 
@@ -24,3 +28,14 @@ export interface Memo {
   createdAt: number;
   updatedAt: number;
 }
+
+export type AiProvider = 'claude' | 'gemini';
+
+export interface AppSettings {
+  provider: AiProvider;
+  claudeApiKey: string;
+  claudeModel: string;
+  geminiApiKey: string;
+  geminiModel: string;
+}
+
